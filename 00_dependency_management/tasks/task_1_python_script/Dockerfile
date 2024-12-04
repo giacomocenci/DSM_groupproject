@@ -2,6 +2,8 @@
 FROM python:3.11-slim
 
 # Define environment variable
-COPY ./hello_esmt.py /hello_esmt.py
+COPY ./test_pandas.py /test_pandas.py
 
-CMD [ "python", "/hello_esmt.py" ]
+RUN pip install pandas
+
+CMD [ "python", "/test_pandas.py" ]
