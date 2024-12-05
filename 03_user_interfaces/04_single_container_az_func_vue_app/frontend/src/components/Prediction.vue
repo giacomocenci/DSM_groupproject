@@ -11,6 +11,8 @@ const suppliers = ['Aromatico', 'Beans Inc.', 'Fair Trade AG', 'Farmers of Brazi
 
 const prediction = ref('')
 
+const loading = ref(false)
+
 const backendUrl = computed(() => {
   return import.meta.env.VITE_APP_BACKEND_URL
 })
@@ -19,7 +21,10 @@ const backendUrl = computed(() => {
 // Make a get request to fastapi server
 const getPrediction = async () => {  
   window.console.log('fetching data')
-  window.console.log(`${backendUrl.value}/score_model?supplier=${selectedSupplier.value}&quantity=${quantity.value}`)
+
+  prediction.value = ''
+  
+  loading.value = true; // Set loading to true
       try {
         const response = await fetch(`${backendUrl.value}/score_model?supplier=${selectedSupplier.value}&quantity=${quantity.value}`);
         const data = await response.json();        
@@ -30,6 +35,7 @@ const getPrediction = async () => {
         alert('could not fetch data')
         window.console.error('Error fetching data:', error);        
       }
+      loading.value = false; 
     }
 </script>
 
@@ -55,8 +61,10 @@ const getPrediction = async () => {
   </div>
 
   <div>
-    <button type="button" @click="getPrediction()">Predict</button>
+    <button v-if="!loading" type="button" @click="getPrediction()">Predict</button>
   </div>
+
+  <div v-if="loading" class="spinner">Loading...</div>
 
   <div class="prediction"> Predicted number of days late: {{ prediction }}</div>
   <div> Backend URL: {{ backendUrl }}</div>
@@ -79,7 +87,7 @@ label {
 button {
   font-size: 1em;
   padding: 0.5em 1em;
-  background-color: #4CAF50;
+  background-color: cadetblue;
   color: white;
   border: none;
   border-radius: 5px;
@@ -96,5 +104,26 @@ button {
   margin: 1em;
   color: cadetblue;
   text-align: center;
+}
+
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #4CAF50;
+  animation: spin 1s ease infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+
 }
 </style>
