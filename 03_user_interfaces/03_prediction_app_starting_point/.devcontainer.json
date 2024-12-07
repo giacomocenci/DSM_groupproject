@@ -7,9 +7,9 @@
 
   "customizations": {
     "vscode": {
-      "extensions": ["vue.volar"]
+      "extensions": ["ms-python.python", "vue.volar"]
     }
   },
 
-  "forwardPorts": [5173]
+  "forwardPorts": [5173, 7071]
 }
