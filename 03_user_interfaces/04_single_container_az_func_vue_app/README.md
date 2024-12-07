@@ -32,7 +32,7 @@ yarn build
 Upload to azure
 ```sh
 az storage blob upload-batch \
-    --account-name {storageAccountName} \
+    --account-name '{storageAccountName}' \
     --destination '$web' \
     --source dist \
     --overwrite \
