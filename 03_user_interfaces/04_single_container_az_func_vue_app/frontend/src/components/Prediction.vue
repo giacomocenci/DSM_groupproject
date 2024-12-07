@@ -9,6 +9,8 @@ import { ref, computed } from 'vue'
 const selectedSupplier = ref('') // Step 1: Add ref for selected supplier
 const suppliers = ['Aromatico', 'Beans Inc.', 'Fair Trade AG', 'Farmers of Brazil', 'Handelskontor Hamburg'] // Step 2: Supplier options
 
+const quantity = ref(0) // Step 3: Add ref for quantity
+
 const prediction = ref('')
 
 const loading = ref(false)
@@ -46,6 +48,7 @@ const getPrediction = async () => {
   
  <!-- Dropdown for suppliers -->
   <div>
+    
     <label for="supplier">Please select a supplier:</label>
     <select id="supplier" v-model="selectedSupplier">
       <option v-for="supplier in suppliers" :key="supplier" :value="supplier">{{ supplier }}</option>

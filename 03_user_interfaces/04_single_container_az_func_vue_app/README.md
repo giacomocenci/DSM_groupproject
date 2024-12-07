@@ -31,8 +31,7 @@ yarn build
 
 Upload to azure
 ```sh
-az storage blob upload-batch \
-    --account-name '{storageAccountName}' \
+az storage blob upload-batch \    
     --destination '$web' \
     --source dist \
     --overwrite \
@@ -51,7 +50,7 @@ az login
 Publish backend from with backend folder
 
 ```sh
-func azure functionapp publish logPrediction \
+func azure functionapp publish '{functionAppName}' \
   --python \
   --build remote
 
