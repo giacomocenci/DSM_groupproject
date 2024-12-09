@@ -1,7 +1,21 @@
 
 
+<!-- Template Part -->
+<template>
+  
+<div class="myPredictionComponent">
+  <div>
+      My Prediction Component
+  </div>
+    
+      
+  <div class="dev"> Backend URL: {{ backendUrl }}</div>
+  
+</div>
+ 
+</template>
 
-<!-- Script Part -->
+<!-- ----------- Script Part --------------------------- -->
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
@@ -33,22 +47,7 @@ const getPrediction = async () => {
 
 
 
-<!-- Template Part -->
-<template>
-  
- 
-  <div>
-      MY APP
-  </div>
-    
-    
-  <div> Dev Info </div>
-  <div> Backend URL: {{ backendUrl }}</div>
-  
-
- 
-</template>
-
+<!-- ----------------------- Style --------------------------- -->
 <style scoped>
 
 div {  
@@ -80,6 +79,20 @@ button {
   margin: 1em;
   color: cadetblue;
   text-align: center;
+}
+
+.dev {
+  font-size: 0.8em;
+  color: white;
+  background: #000;
+  text-align: center;
+}
+
+.myPredictionComponent {
+  background-color: #9c8e8e;
+  padding: 1em;
+  border-radius: 5px;
+  margin: 1em;
 }
 
 

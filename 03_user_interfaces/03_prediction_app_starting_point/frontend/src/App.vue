@@ -4,7 +4,7 @@ import Prediction from './components/Prediction.vue'
 
 <template>
   <div class="headline">
-    Late inbound delivery prediction
+    Late inbound delivery prediction App
   </div>
   <Prediction/>
 </template>
