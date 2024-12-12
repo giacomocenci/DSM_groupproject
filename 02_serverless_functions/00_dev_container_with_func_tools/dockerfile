@@ -13,6 +13,8 @@ ENV AzureFunctionsJobHost__Logging__Console__IsEnabled=true
 # Import as otherwise point to wrong directory and function app will not be found
 ENV AzureWebJobsScriptRoot=""
 
+COPY ./app/requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
 # Step 5: Run the function locally
 CMD  ["/bin/bash"]
