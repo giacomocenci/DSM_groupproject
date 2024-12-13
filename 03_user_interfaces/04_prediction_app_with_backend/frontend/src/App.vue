@@ -4,14 +4,14 @@ import Prediction from './components/Prediction.vue'
 
 <template>
   <div class="headline">
-    Late inbound delivery prediction
+    Late purchase order prediction
   </div>
   <Prediction/>
 </template>
 
+
+
 <style scoped>
-
-
 .headline {
   font-size: 2em;
   margin: 1em;

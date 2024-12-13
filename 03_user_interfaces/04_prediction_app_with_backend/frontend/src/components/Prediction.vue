@@ -76,7 +76,7 @@ const getPrediction = async () => {
     <button v-if="!loading" type="button" @click="getPrediction()">Predict</button>
   </div>
 
-  <div v-if="loading" class="spinner">Loading...</div>
+  <div v-if="loading" class="spinner"></div>
 
   <div class="prediction"> Predicted number of days late: {{ prediction }}</div>
   <div> Backend URL: {{ backendUrl }}</div>

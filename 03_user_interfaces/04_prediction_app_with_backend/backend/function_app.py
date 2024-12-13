@@ -32,17 +32,18 @@ def score_model(req: func.HttpRequest) -> func.HttpResponse:
         data[f'd_{s}'] = [1 if s == supplier else 0]
     
     # Create the DataFrame
-    test_data = pd.DataFrame(data)
+    payload = pd.DataFrame(data)
     
     # Calculate the prediction
-    prediction = model.predict(test_data)[0]
+    prediction = model.predict(payload)[0]
     
     # Log the prediction
     logging.warning(f"Predictions: {prediction}") 
     
     return json.dumps({
-        "message": f"""Model scored successfully! with quantity: 
-            {quantity} and supplier: {supplier}, "prediction": {prediction}""",           
+        "message": f"""Model scored successfully! with quantity: {quantity} 
+        and supplier: {supplier}, 
+        "prediction": {prediction}""",           
         "prediction": prediction,
         "status_code": 200
         })
